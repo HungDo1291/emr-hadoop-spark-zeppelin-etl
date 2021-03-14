@@ -14,7 +14,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS prod.summary_access_log(
     count INT)
     PARTITIONED BY (dte STRING)
 STORED AS PARQUET
-LOCATION 's3://nikita-ds-playground/prod/summary_access_log/';
+LOCATION 's3://spark-emr-log/prod/summary_access_log/';
 
 
 INSERT OVERWRITE TABLE prod.summary_access_log PARTITION(dte)

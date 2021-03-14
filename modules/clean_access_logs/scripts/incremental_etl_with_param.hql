@@ -23,13 +23,13 @@ CREATE EXTERNAL TABLE IF NOT EXISTS prod.clean_access_log(
 )
 PARTITIONED BY (dte STRING)
 STORED AS PARQUET
-LOCATION 's3://nikita-ds-playground/prod/clean_access_log/';
+LOCATION 's3://spark-emr-log/prod/clean_access_log/';
 
 DROP TABLE nik.access_log_temp;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS nik.access_log_temp
 (log STRING)
-LOCATION 's3://nikita-ds-playground/raw/access-log/${hiveconf:RUN_DATE}/';
+LOCATION 's3://spark-emr-log/raw/access-log/${hiveconf:RUN_DATE}/';
 
 
 INSERT OVERWRITE TABLE prod.clean_access_log PARTITION(dte)
